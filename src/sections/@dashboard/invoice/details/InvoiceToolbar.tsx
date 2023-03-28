@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
 // next
 import { useRouter } from 'next/router';
 // @mui
@@ -67,24 +66,6 @@ export default function InvoiceToolbar({ invoice }: Props) {
             </IconButton>
           </Tooltip>
 
-          <PDFDownloadLink
-            document={<InvoicePDF invoice={invoice} />}
-            fileName={invoice.invoiceNumber}
-            style={{ textDecoration: 'none' }}
-          >
-            {({ loading }) => (
-              <Tooltip title="Download">
-                <IconButton>
-                  {loading ? (
-                    <CircularProgress size={24} color="inherit" />
-                  ) : (
-                    <Iconify icon="eva:download-fill" />
-                  )}
-                </IconButton>
-              </Tooltip>
-            )}
-          </PDFDownloadLink>
-
           <Tooltip title="Print">
             <IconButton>
               <Iconify icon="eva:printer-fill" />
@@ -129,11 +110,6 @@ export default function InvoiceToolbar({ invoice }: Props) {
               </IconButton>
             </Tooltip>
           </DialogActions>
-          <Box sx={{ flexGrow: 1, height: '100%', overflow: 'hidden' }}>
-            <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
-              <InvoicePDF invoice={invoice} />
-            </PDFViewer>
-          </Box>
         </Box>
       </Dialog>
     </>

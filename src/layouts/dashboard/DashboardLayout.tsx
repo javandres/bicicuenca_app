@@ -42,22 +42,22 @@ export default function DashboardLayout({ children }: Props) {
   const renderNavVertical = <NavVertical openNav={open} onCloseNav={handleClose} />;
 
   const renderContent = () => {
-    if (isNavHorizontal) {
-      return (
-        <>
-          <Header onOpenNav={handleOpen} />
+    // if (isNavHorizontal) {
+    //   return (
+    //     <>
+    //       <Header onOpenNav={handleOpen} />
 
-          {isDesktop ? <NavHorizontal /> : renderNavVertical}
+    //       {isDesktop ? <NavHorizontal /> : renderNavVertical}
 
-          <Main>{children}</Main>
-        </>
-      );
-    }
+    //       <Main>{children}</Main>
+    //     </>
+    //   );
+    // }
 
     if (isNavMini) {
       return (
         <>
-          <Header onOpenNav={handleOpen} />
+          {/* <Header onOpenNav={handleOpen} /> */}
 
           <Box
             sx={{
@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: Props) {
 
     return (
       <>
-        <Header onOpenNav={handleOpen} />
+        {/* <Header onOpenNav={handleOpen} /> */}
 
         <Box
           sx={{

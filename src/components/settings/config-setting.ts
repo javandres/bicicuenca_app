@@ -1,6 +1,8 @@
 // components
 import { SettingsValueProps } from './types';
 
+const geoportalUrl = process.env.NEXT_PUBLIC_GEOPORTAL_URL;
+
 // PLEASE REMOVE `LOCAL STORAGE` WHEN YOU CHANGE SETTINGS.
 // ----------------------------------------------------------------------
 
@@ -10,5 +12,5 @@ export const defaultSettings: SettingsValueProps = {
   themeContrast: 'default',
   themeLayout: 'vertical',
   themeColorPresets: 'cyan',
-  themeStretch: false,
+  themeStretch: true,
 };

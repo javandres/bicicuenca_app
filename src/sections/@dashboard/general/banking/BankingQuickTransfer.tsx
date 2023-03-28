@@ -115,11 +115,11 @@ export default function BankingQuickTransfer({ title, subheader, list, sx, ...ot
   };
 
   const handleBlur = () => {
-    if (amount < 0) {
-      setAmount(0);
-    } else if (amount > MAX_AMOUNT) {
-      setAmount(MAX_AMOUNT);
-    }
+    // if (amount < 0) {
+    //   setAmount(0);
+    // } else if (amount > MAX_AMOUNT) {
+    //   setAmount(MAX_AMOUNT);
+    // }
   };
 
   const handlePrev = () => {
