@@ -18,6 +18,7 @@ Otp.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</Dashboard
 export default function Otp() {
   const { themeStretch } = useSettingsContext();
   const [iframeHeight, setIframeHeight] = useState(800);
+  const [otpUiUrl, setGeoportalUrl] = useState(process.env.NEXT_PUBLIC_OTP_UI_URL);
   // let Iref = useRef("");
 
   // useEffect(() => {
@@ -78,7 +79,7 @@ export default function Otp() {
       >
         <iframe
           title="otp"
-          src="http://localhost:8082/"
+          src={otpUiUrl}
           frameBorder="0"
           height={iframeHeight}
           width="100%"

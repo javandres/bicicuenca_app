@@ -4,13 +4,14 @@ import Cors from 'cors';
 async function fetchAccessToken(): Promise<string> {
   try {
     const body = {
-      username: 'admin',
-      password: 'admin',
+      username: `${process.env.NEXT_DASHBOARD_USER}`,
+      password: `${process.env.NEXT_DASHBOARD_PASSWORD}`,
       provider: 'db',
       refresh: true,
     };
 
-    const response = await fetch('http://localhost:8088/api/v1/security/login', {
+    console.log('%c [ body ]-7', 'font-size:13px; background:pink; color:#bf2c9f;', body);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_DASHBOARD_URL}/api/v1/security/login`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
@@ -35,7 +36,7 @@ async function fetchGuestToken(): Promise<string> {
       resources: [
         {
           type: 'dashboard',
-          id: '7562ccdb-eb2e-4d10-9595-6cb9a7d1a4f2',
+          id: `${process.env.NEXT_PUBLIC_DASHBOARD1_ID}`,
         },
       ],
       rls: [],
@@ -45,21 +46,20 @@ async function fetchGuestToken(): Promise<string> {
         last_name: 'guest',
       },
     };
-    const response = await fetch('http://localhost:8088/api/v1/security/guest_token', {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_DASHBOARD_URL}/api/v1/security/guest_token`,
+      {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
 
     const jsonResponse = await response.json();
-    console.log(
-      '%c [ jsonResponse ]-64',
-      'font-size:13px; background:pink; color:#bf2c9f;',
-      jsonResponse
-    );
+    console.log('jsonResponse', jsonResponse);
     return jsonResponse?.token;
   } catch (error) {
     console.error(error);

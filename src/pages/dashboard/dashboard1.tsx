@@ -21,27 +21,22 @@ Dashboard1.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</Da
 export default function Dashboard1() {
   const { themeStretch } = useSettingsContext();
   const [iframeHeight, setIframeHeight] = useState(800);
+  const [streamsetUrl, setStreamsetUrl] = useState(process.env.NEXT_PUBLIC_DASHBOARD_URL);
+  const [dashboardId, setDashboardId] = useState(process.env.NEXT_PUBLIC_DASHBOARD1_ID);
 
   const getToken = async () => {
-    const body1 = {
-      username: 'admin',
-      password: 'admin',
-      provider: 'db',
-      refresh: true,
-    };
+    const rawResponse = await fetch('/api/superset');
 
-    const response1 = await fetch('http://localhost:8081/api/superset');
+    const jsonResponse = await rawResponse.json();
 
-    const resp = await response1.json();
-
-    return `${resp.token}`;
+    return `${jsonResponse.token}`;
   };
 
   useEffect(() => {
     const embed = async () => {
       await embedDashboard({
-        id: '7562ccdb-eb2e-4d10-9595-6cb9a7d1a4f2', // given by the Superset embedding UI
-        supersetDomain: 'http://localhost:8088',
+        id: `${dashboardId}`, // given by the Superset embedding UI
+        supersetDomain: `${streamsetUrl}`,
         mountPoint: document.getElementById('dashboard') as HTMLElement, // html element in which iframe render
         fetchGuestToken: () => getToken(),
         dashboardUiConfig: {

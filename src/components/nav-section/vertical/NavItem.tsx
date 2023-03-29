@@ -4,9 +4,7 @@ import NextLink from 'next/link';
 import { Box, Tooltip, Link, ListItemText } from '@mui/material';
 // locales
 import { useLocales } from '../../../locales';
-// auth
-import RoleBasedGuard from '../../../auth/RoleBasedGuard';
-//
+
 import Iconify from '../../iconify';
 //
 import { NavItemProps } from '../types';
@@ -96,5 +94,5 @@ export default function NavItem({
     );
   };
 
-  return <RoleBasedGuard roles={roles}> {renderItem()} </RoleBasedGuard>;
+  return <> {renderItem()} </>;
 }

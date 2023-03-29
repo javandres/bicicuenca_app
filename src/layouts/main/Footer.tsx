@@ -5,11 +5,9 @@ import { useRouter } from 'next/router';
 import { Box, Grid, Link, Stack, Divider, Container, Typography, IconButton } from '@mui/material';
 // routes
 import { PATH_PAGE } from '../../routes/paths';
-// _mock
-import { _socials } from '../../_mock/arrays';
+
 // components
 import Logo from '../../components/logo';
-import Iconify from '../../components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -99,22 +97,6 @@ export default function Footer() {
               The starting point for your next project with Minimal UI Kit, built on the newest
               version of Material-UI ©, ready to be customized to your style.
             </Typography>
-
-            <Stack
-              spacing={1}
-              direction="row"
-              justifyContent={{ xs: 'center', md: 'flex-start' }}
-              sx={{
-                mt: 5,
-                mb: { xs: 5, md: 0 },
-              }}
-            >
-              {_socials.map((social) => (
-                <IconButton key={social.name}>
-                  <Iconify icon={social.icon} />
-                </IconButton>
-              ))}
-            </Stack>
           </Grid>
 
           <Grid item xs={12} md={7}>

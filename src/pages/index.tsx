@@ -7,18 +7,7 @@ import { Box } from '@mui/material';
 // layouts
 import MainLayout from '../layouts/main';
 // sections
-import {
-  HomeHero,
-  HomeMinimal,
-  HomeDarkMode,
-  HomeLookingFor,
-  HomeForDesigner,
-  HomeColorPresets,
-  HomePricingPlans,
-  HomeAdvertisement,
-  HomeCleanInterfaces,
-  HomeHugePackElements,
-} from '../sections/home';
+import { HomeLookingFor } from '../sections/home';
 
 // ----------------------------------------------------------------------
 
@@ -70,23 +59,7 @@ export default function HomePage() {
           bgcolor: 'background.default',
         }}
       >
-        {/* <HomeMinimal />
-
-        <HomeHugePackElements /> */}
-        {/* 
-        <HomeForDesigner />
-
-        <HomeDarkMode />
-
-        <HomeColorPresets />
-
-        <HomeCleanInterfaces />
-
-        <HomePricingPlans /> */}
-
         <HomeLookingFor />
-
-        {/* <HomeAdvertisement /> */}
       </Box>
     </>
   );

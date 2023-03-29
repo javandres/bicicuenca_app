@@ -4,8 +4,7 @@ import Head from 'next/head';
 import { Box, Card, Container, Typography, CardHeader } from '@mui/material';
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
-// _mock
-import _mock from '../../../_mock';
+
 // layouts
 import MainLayout from '../../../layouts/main';
 // components
@@ -22,7 +21,7 @@ const RATIO = ['4/3', '3/4', '6/4', '4/6', '16/9', '9/16', '21/9', '9/21', '1/1'
 
 const IMAGES = RATIO.map((value, index) => ({
   value,
-  url: _mock.image.cover(index + 1),
+  url: '',
 }));
 
 export default function DemoImagePage() {

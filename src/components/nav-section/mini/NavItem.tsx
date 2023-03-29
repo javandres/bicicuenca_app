@@ -6,7 +6,6 @@ import { Tooltip, Link, ListItemText } from '@mui/material';
 // locales
 import { useLocales } from '../../../locales';
 // auth
-import RoleBasedGuard from '../../../auth/RoleBasedGuard';
 //
 import Iconify from '../../iconify';
 import { NavItemProps } from '../types';
@@ -99,7 +98,7 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
       );
     };
 
-    return <RoleBasedGuard roles={roles}> {renderItem()} </RoleBasedGuard>;
+    return <> {renderItem()} </>;
   }
 );
 

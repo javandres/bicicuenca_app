@@ -1,5 +1,3 @@
-import { CustomFile } from '../components/upload';
-
 // ----------------------------------------------------------------------
 
 export type IBlogPostComment = {
@@ -26,7 +24,7 @@ export type IBlogNewPost = {
   title: string;
   description: string;
   content: string;
-  cover: CustomFile | string | null;
+  cover: string | null;
   tags: string[];
   publish: boolean;
   comments: boolean;
