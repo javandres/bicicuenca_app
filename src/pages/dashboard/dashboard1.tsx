@@ -52,7 +52,7 @@ export default function Dashboard1() {
     if (document.getElementById('dashboard')) {
       embed();
     }
-  }, []);
+  });
 
   return (
     <>
