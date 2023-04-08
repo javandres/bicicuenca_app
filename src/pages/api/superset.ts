@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Cors from 'cors';
+import { setTimeout } from 'timers/promises';
 import { getAccessToken } from './token';
 
 async function fetchGuestToken(dashboardId: string): Promise<string> {
@@ -41,7 +42,15 @@ async function fetchGuestToken(dashboardId: string): Promise<string> {
   } catch (error) {
     console.error('Error in fetchGuestToken', error);
     console.error(error);
-    await fetchGuestToken(dashboardId);
+    const retryTime = 2000;
+    console.error('Retry in ', retryTime);
+
+    (async () => {
+      await setTimeout(retryTime, 'resolved');
+      const token = await fetchGuestToken(dashboardId);
+      return token;
+    })();
+
     return '';
   }
 }
