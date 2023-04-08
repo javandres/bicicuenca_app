@@ -43,6 +43,11 @@ const navConfig = [
     items: [
       { title: 'Estado del Sistema', path: PATH_DASHBOARD.general.app, icon: ICONS.dashboard },
       {
+        title: 'Detalle estaciones',
+        path: PATH_DASHBOARD.general.dashboard2,
+        icon: ICONS.dashboard,
+      },
+      {
         title: 'Planificador de Rutas',
         path: PATH_DASHBOARD.general.otp,
         icon: ICONS.file,

@@ -3,6 +3,9 @@ import Cors from 'cors';
 
 async function fetchAccessToken(): Promise<string> {
   try {
+    console.log(
+      `fetchAccessToken from url=${process.env.NEXT_DASHBOARD_URL} username=${process.env.NEXT_DASHBOARD_USER}`
+    );
     const body = {
       username: `${process.env.NEXT_DASHBOARD_USER}`,
       password: `${process.env.NEXT_DASHBOARD_PASSWORD}`,
@@ -10,8 +13,7 @@ async function fetchAccessToken(): Promise<string> {
       refresh: true,
     };
 
-    console.log('%c [ body ]-7', 'font-size:13px; background:pink; color:#bf2c9f;', body);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_DASHBOARD_URL}/api/v1/security/login`, {
+    const response = await fetch(`${process.env.NEXT_DASHBOARD_URL}/api/v1/security/login`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
@@ -23,20 +25,25 @@ async function fetchAccessToken(): Promise<string> {
 
     return jsonResponse?.access_token;
   } catch (e) {
-    console.error(e);
+    console.error('Error in fetchAccessToken', e);
     return '';
   }
 }
 
-async function fetchGuestToken(): Promise<string> {
+async function fetchGuestToken(dashboardId: string): Promise<string> {
   const accessToken = await fetchAccessToken();
 
   try {
+    console.log(
+      `fetchGuestToken from url=${process.env.NEXT_DASHBOARD_URL} dashboardId=${
+        dashboardId ?? process.env.NEXT_PUBLIC_DASHBOARD1_ID
+      }`
+    );
     const body = {
       resources: [
         {
           type: 'dashboard',
-          id: `${process.env.NEXT_PUBLIC_DASHBOARD1_ID}`,
+          id: `${dashboardId ?? process.env.NEXT_PUBLIC_DASHBOARD1_ID}`,
         },
       ],
       rls: [],
@@ -46,22 +53,20 @@ async function fetchGuestToken(): Promise<string> {
         last_name: 'guest',
       },
     };
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_DASHBOARD_URL}/api/v1/security/guest_token`,
-      {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
+    const response = await fetch(`${process.env.NEXT_DASHBOARD_URL}/api/v1/security/guest_token`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
 
     const jsonResponse = await response.json();
     console.log('jsonResponse', jsonResponse);
     return jsonResponse?.token;
   } catch (error) {
+    console.error('Error in fetchGuestToken', error);
     console.error(error);
     return '';
   }
@@ -86,6 +91,9 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: Function) 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await runMiddleware(req, res, cors);
 
-  const token = await fetchGuestToken();
+  const { query } = req;
+  const dashboardId: string = `${query.dashboardId}`;
+
+  const token = await fetchGuestToken(dashboardId);
   res.json({ token });
 }
