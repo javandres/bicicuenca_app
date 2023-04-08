@@ -14,15 +14,20 @@ import { useSettingsContext } from '../../components/settings';
 
 // ----------------------------------------------------------------------
 
-Dashboard1.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
+Dashboard2.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
 // ----------------------------------------------------------------------
 
-export default function Dashboard1() {
+export default function Dashboard2() {
+  console.log(
+    'Dashboard',
+    process.env.NEXT_PUBLIC_DASHBOARD_URL,
+    process.env.NEXT_PUBLIC_DASHBOARD1_ID
+  );
   const { themeStretch } = useSettingsContext();
   const [iframeHeight, setIframeHeight] = useState(800);
   const [streamsetUrl, setStreamsetUrl] = useState(process.env.NEXT_PUBLIC_DASHBOARD_URL);
-  const [dashboardId, setDashboardId] = useState(process.env.NEXT_PUBLIC_DASHBOARD1_ID);
+  const [dashboardId, setDashboardId] = useState(process.env.NEXT_PUBLIC_DASHBOARD2_ID);
 
   const getToken = async () => {
     const rawResponse = await fetch(`/api/superset?dashboardId=${dashboardId}`);
