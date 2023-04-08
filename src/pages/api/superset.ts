@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Cors from 'cors';
 
+const accessToken: string = null;
+
 async function fetchAccessToken(): Promise<string> {
   try {
     console.log(
@@ -23,6 +25,7 @@ async function fetchAccessToken(): Promise<string> {
 
     const jsonResponse = await response.json();
 
+    console.log('fetchAccessToken result:', jsonResponse?.access_token);
     return jsonResponse?.access_token;
   } catch (e) {
     console.error('Error in fetchAccessToken', e);
@@ -63,11 +66,12 @@ async function fetchGuestToken(dashboardId: string): Promise<string> {
     });
 
     const jsonResponse = await response.json();
-    console.log('jsonResponse', jsonResponse);
+    console.log('fetchGuestToken result', jsonResponse);
     return jsonResponse?.token;
   } catch (error) {
     console.error('Error in fetchGuestToken', error);
     console.error(error);
+    await fetchGuestToken(dashboardId);
     return '';
   }
 }
