@@ -1,40 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Cors from 'cors';
-
-const accessToken: string = null;
-
-async function fetchAccessToken(): Promise<string> {
-  try {
-    console.log(
-      `fetchAccessToken from url=${process.env.NEXT_DASHBOARD_URL} username=${process.env.NEXT_DASHBOARD_USER}`
-    );
-    const body = {
-      username: `${process.env.NEXT_DASHBOARD_USER}`,
-      password: `${process.env.NEXT_DASHBOARD_PASSWORD}`,
-      provider: 'db',
-      refresh: true,
-    };
-
-    const response = await fetch(`${process.env.NEXT_DASHBOARD_URL}/api/v1/security/login`, {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const jsonResponse = await response.json();
-
-    console.log('fetchAccessToken result:', jsonResponse?.access_token);
-    return jsonResponse?.access_token;
-  } catch (e) {
-    console.error('Error in fetchAccessToken', e);
-    return '';
-  }
-}
+import { getAccessToken } from './token';
 
 async function fetchGuestToken(dashboardId: string): Promise<string> {
-  const accessToken = await fetchAccessToken();
+  const accessToken = await getAccessToken();
 
   try {
     console.log(
@@ -56,6 +25,7 @@ async function fetchGuestToken(dashboardId: string): Promise<string> {
         last_name: 'guest',
       },
     };
+
     const response = await fetch(`${process.env.NEXT_DASHBOARD_URL}/api/v1/security/guest_token`, {
       method: 'POST',
       body: JSON.stringify(body),
