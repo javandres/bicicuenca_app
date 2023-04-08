@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Cors from 'cors';
 import { setTimeout } from 'timers/promises';
-import { getAccessToken } from './token';
+import { getAccessToken, isTokenExpired } from './token';
 
 async function fetchGuestToken(dashboardId: string): Promise<string> {
   const accessToken = await getAccessToken();
@@ -71,12 +71,24 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: Function) 
   });
 }
 
+const guestToken: {
+  [key: string]: string;
+} = {};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await runMiddleware(req, res, cors);
 
   const { query } = req;
   const dashboardId: string = `${query.dashboardId}`;
 
+  if (guestToken[dashboardId] && !isTokenExpired(guestToken[dashboardId])) {
+    console.log('Existing guest token');
+    res.json({ token: guestToken[dashboardId] });
+    return;
+  }
+  console.log('Generating new guest token');
   const token = await fetchGuestToken(dashboardId);
-  res.json({ token });
+  guestToken[dashboardId] = token;
+
+  res.json({ token: guestToken[dashboardId] });
 }
