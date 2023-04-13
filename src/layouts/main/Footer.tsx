@@ -58,7 +58,7 @@ export default function Footer() {
 
         <Typography variant="caption" component="div">
           desarrollado por &nbsp;
-          <Link href="https://llactalab.ucuenca.edu-ec/"> LlactaLAB </Link>
+          <Link href="https://llactalab.ucuenca.edu.ec/"> LlactaLAB </Link>
         </Typography>
       </Container>
     </Box>

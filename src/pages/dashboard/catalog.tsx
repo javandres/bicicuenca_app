@@ -54,7 +54,7 @@ export default function Otp() {
   return (
     <>
       <Head>
-        <title> Planificador de rutas Multimodal</title>
+        <title> Geo Visor</title>
       </Head>
 
       {/* <div
