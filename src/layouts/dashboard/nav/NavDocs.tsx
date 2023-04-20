@@ -22,7 +22,7 @@ export default function NavDocs() {
         textAlign: 'center',
       }}
     >
-      <Box component="img" src="/assets/illustrations/illustration_docs.svg" />
+      <Box component="img" src="/assets/images/home/zone_landing2.png" />
 
       {/* <div>
         <Typography gutterBottom variant="subtitle1">
