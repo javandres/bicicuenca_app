@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { m } from 'framer-motion';
 // @mui
 import Image from 'src/components/image/Image';
@@ -5,7 +6,6 @@ import { styled } from '@mui/material/styles';
 import { Box, Paper, Container, Typography } from '@mui/material';
 // components
 import { MotionViewport, varFade } from '../../components/animate';
-import { fontWeight } from '@mui/system';
 
 // ----------------------------------------------------------------------
 
@@ -69,11 +69,11 @@ export default function HomeEstadoSistema() {
                     sistema
                   </li>
                   <li>
-                    Est. Activas (estado="A"): representa el número de estaciones activas en el
+                    Est. Activas (estado='A'): representa el número de estaciones activas en el
                     sistema
                   </li>
                   <li>
-                    Est. Inactivas (estado="I"): representa el número de estaciones inactivas en el
+                    Est. Inactivas (estado='I'): representa el número de estaciones inactivas en el
                     sistema
                   </li>
                 </ul>

@@ -1,4 +1,3 @@
-import { HomeLookingFor } from '../sections/home';
 import { m, useScroll, useSpring } from 'framer-motion';
 // next
 import Head from 'next/head';
@@ -8,11 +7,12 @@ import { Box } from '@mui/material';
 import HomeDetalle from 'src/sections/home/HomeDetalle';
 import HomeEstadoSistema from 'src/sections/home/HomeEstadoSistema';
 // layouts
-import MainLayout from '../layouts/main';
 // sections
 import HomePlanificador from 'src/sections/home/HomePlanificador';
 import HomeGeovisor from 'src/sections/home/HomeGeovisor';
 import HomeIntro from 'src/sections/home/HomeIntro';
+import { HomeLookingFor } from '../sections/home';
+import MainLayout from '../layouts/main';
 
 // ----------------------------------------------------------------------
 
