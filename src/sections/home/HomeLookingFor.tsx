@@ -1,7 +1,7 @@
 import { m } from 'framer-motion';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Button, Container, Typography, Grid, Stack } from '@mui/material';
+import { Box, Button, Container, Typography, Grid, Stack, Paper } from '@mui/material';
 // next
 import NextLink from 'next/link';
 // hooks
@@ -71,7 +71,7 @@ function Description() {
     >
       <m.div variants={varFade().inDown}>
         <Typography variant="overline" component="div" sx={{ color: 'text.disabled' }}>
-          Proyecto de análisis de datos y apoyo al sistema de bicicletas compartidas de
+          Proyecto de visualización de datos y apoyo al sistema de bicicletas compartidas de
         </Typography>
       </m.div>
 
