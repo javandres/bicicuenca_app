@@ -11,7 +11,7 @@ import { MotionViewport, varFade } from '../../components/animate';
 const RootStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(8, 0),
   [theme.breakpoints.up('md')]: {
-    padding: theme.spacing(10, 0),
+    padding: theme.spacing(0, 0),
   },
 }));
 
@@ -43,10 +43,11 @@ export default function HomeIntro() {
               </Typography>
               <Typography sx={{ color: 'text.secondary' }}>
                 El objetivo de ésta plataforma de datos del sistema de Bici Pública de Cuenca, es
-                ser una herramienta para el personal del GAD de Cuenca y la Empresa Pública de
-                Movilidad EMOV que permita conocer el estado en tiempo real, visualización de series
-                temporales, exploración del sistema con un planificador de rutas multimodal, y
-                visualización de datos en un mapa interactivo.
+                ser una herramienta para el uso del{' '}
+                <b>GAD de Cuenca y la Empresa Pública de Movilidad EMOV </b>que permita conocer el
+                estado en tiempo real, visualización de series temporales, exploración del sistema
+                con un planificador de rutas multimodal, y visualización de datos en un mapa
+                interactivo.
               </Typography>
             </m.div>
           </Box>

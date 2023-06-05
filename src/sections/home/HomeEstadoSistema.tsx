@@ -61,20 +61,13 @@ export default function HomeEstadoSistema() {
                 <br />
                 <ul>
                   <li>
-                    <span> Número de anclajes:</span> representa el número de anclajes disponibles
-                    en el sistema
+                    <span> Número de anclajes:</span> número de espacios de estacionamiento
+                    disponibles en el sistema
                   </li>
+                  <li>Número de biciletas: número de bicicletas disponibles para uso.</li>
+                  <li>Estaciones. Activas: número de estaciones operativas.</li>
                   <li>
-                    Número de biciletas: representa el número de bicicletas disponibles en el
-                    sistema
-                  </li>
-                  <li>
-                    Est. Activas (estado='A'): representa el número de estaciones activas en el
-                    sistema
-                  </li>
-                  <li>
-                    Est. Inactivas (estado='I'): representa el número de estaciones inactivas en el
-                    sistema
+                    Estaciones. Inactivas: representa el número de estaciones no operativas. sistema
                   </li>
                 </ul>
               </Typography>

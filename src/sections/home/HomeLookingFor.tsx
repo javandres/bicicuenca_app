@@ -18,7 +18,7 @@ import { MotionViewport, varFade } from '../../components/animate';
 const StyledRoot = styled('div')(({ theme }) => ({
   padding: theme.spacing(10, 0),
   [theme.breakpoints.up('md')]: {
-    padding: theme.spacing(15, 0),
+    padding: theme.spacing(10, 0),
   },
 }));
 
@@ -34,7 +34,7 @@ export default function HomeLookingFor() {
           container
           alignItems="center"
           justifyContent="space-between"
-          spacing={{ xs: 5, md: 0 }}
+          spacing={{ xs: 5, m: 0 }}
         >
           <Grid item xs={12} md={4}>
             <Description />
@@ -97,7 +97,14 @@ function Description() {
 function Content() {
   return (
     <Box component={m.div} variants={varFade().inUp}>
-      <Image disabledEffect alt="rocket" src="/assets/images/home/zone_landing2.png" />
+      <Image
+        sx={{
+          width: 500,
+        }}
+        disabledEffect
+        alt="rocket"
+        src="/assets/images/home/zone_landing2.png"
+      />
     </Box>
   );
 }

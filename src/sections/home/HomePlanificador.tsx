@@ -2,9 +2,10 @@ import { m } from 'framer-motion';
 // @mui
 import Image from 'src/components/image/Image';
 import { styled } from '@mui/material/styles';
-import { Box, Paper, Container, Typography } from '@mui/material';
+import { Box, Paper, Container, Typography, ListItem } from '@mui/material';
 // components
 import { MotionViewport, varFade } from '../../components/animate';
+import { Stack } from '@mui/system';
 
 // ----------------------------------------------------------------------
 
@@ -63,8 +64,44 @@ export default function HomePlanificador() {
                 diferentes opciones de transporte disponibles.
                 <br />
                 La interfáz de usuario presenta triángulo de preferencia que permite al usuario
-                ajustar la ruta entre rutas más rápidas, con menores pendientes, y más amigables
-                para las bicis.
+                ajustar la ruta entre: con menores pendientes, y más amigables para las bicis.
+                <br />
+                <Stack spacing={2} direction="row" alignItems="center">
+                  <Stack>
+                    <Image
+                      alt="cover"
+                      src="/assets/images/home/bici_r.png"
+                      sx={{ maxWidth: 280, mx: 'auto', pt: 5 }}
+                    />
+                  </Stack>
+                  <Stack sx={{ minWidth: 0 }}>
+                    <Typography noWrap>Priorizar rutas más rápidas.</Typography>
+                  </Stack>
+                </Stack>
+                <Stack spacing={2} direction="row" alignItems="center">
+                  <Stack>
+                    <Image
+                      alt="cover"
+                      src="/assets/images/home/bici_p.png"
+                      sx={{ maxWidth: 280, mx: 'auto', pt: 5 }}
+                    />
+                  </Stack>
+                  <Stack sx={{ minWidth: 0 }}>
+                    <Typography noWrap>Priorizar rutas con menores pendientes:</Typography>
+                  </Stack>
+                </Stack>
+                <Stack spacing={2} direction="row" alignItems="center">
+                  <Stack>
+                    <Image
+                      alt="cover"
+                      src="/assets/images/home/bici_b.png"
+                      sx={{ maxWidth: 280, mx: 'auto', pt: 5 }}
+                    />
+                  </Stack>
+                  <Stack sx={{ minWidth: 0 }}>
+                    <Typography noWrap> Priorizar rutas con infraestructura ciclística</Typography>
+                  </Stack>
+                </Stack>
                 <br />
                 <br />
                 Se puede interactual con el ruteador multimodal mediante Sistemas de Información
